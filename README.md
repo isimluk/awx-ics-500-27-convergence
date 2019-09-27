@@ -6,75 +6,63 @@ Following is a list of events and activities as defined by Appendix B of [Intell
 
 ```
 Sep 25 15:46:09 mnau dockerd-current[10023]: 2019-09-25 13:46:09,571 INFO     awx.api.generics User admin logged in.
-Sep 25 15:46:09 mnau dockerd-current[10023]: 172.18.0.1 POST /api/login/ - HTTP/1.1 302
-Sep 25 15:46:09 mnau dockerd-current[10023]: 172.18.0.1 GET /api/ - HTTP/1.1 200
-Sep 25 15:46:09 mnau dockerd-current[10023]: 172.18.0.1 GET /api/v2/me/ - HTTP/1.1 200
-Sep 25 15:46:09 mnau dockerd-current[10023]: 172.18.0.1 GET /api/v2/config/ - HTTP/1.1 200
-Sep 25 15:46:09 mnau dockerd-current[10023]: 172.18.0.1 GET /api/v2/workflow_approvals/?status=pending&page_size=1 - HTTP/1.1 200
-Sep 25 15:46:09 mnau dockerd-current[10023]: 172.18.0.1 GET /api/v2/teams/?page_size=20&order_by=name - HTTP/1.1 200
-Sep 25 15:46:09 mnau dockerd-current[10023]: 172.18.0.1 GET /api/v2/me/ - HTTP/1.1 200
-Sep 25 15:46:09 mnau dockerd-current[10023]: 172.18.0.1 GET /api/v2/teams/1/ - HTTP/1.1 200
-Sep 25 15:46:10 mnau dockerd-current[10023]: 172.18.0.1 GET /api/v2/me/ - HTTP/1.1 200
-Sep 25 15:46:10 mnau dockerd-current[10023]: 172.18.0.1 GET /api/v2/users/1/admin_of_organizations/ - HTTP/1.1 200
-Sep 25 15:46:10 mnau dockerd-current[10023]: 172.18.0.1 OPTIONS /api/v2/teams/ - HTTP/1.1 200
-Sep 25 15:46:10 mnau dockerd-current[10023]: 172.18.0.1 OPTIONS /api/v2/teams/ - HTTP/1.1 200
-Sep 25 15:46:10 mnau dockerd-current[10023]: 172.18.0.1 GET /api/v2/organizations/?name__iexact=Default&role_level=admin_role - HTTP/1.1 200
 ```
 
 ## Authentication Events - Logons - Failure
 
 ```
 Sep 25 15:44:58 mnau dockerd-current[10023]: 2019-09-25 13:44:58,065 WARNING  awx.api.generics Login failed for user admin from 172.18.0.1
-Sep 25 15:44:58 mnau dockerd-current[10023]: 2019-09-25 13:44:58,086 WARNING  django.request Unauthorized: /api/login/
-Sep 25 15:44:58 mnau dockerd-current[10023]: 2019-09-25 13:44:58,086 WARNING  django.request Unauthorized: /api/login/
-Sep 25 15:44:58 mnau dockerd-current[10023]: 172.18.0.1 POST /api/login/ - HTTP/1.1 401
 ```
 
 ## Authentication Events - Logoffs - Success
 
 ```
 Sep 25 15:58:51 mnau dockerd-current[10023]: 2019-09-25 13:58:51,050 INFO     awx.api.generics User admin logged out.
-Sep 25 15:58:51 mnau dockerd-current[10023]: 172.18.0.1 GET /api/logout/ - HTTP/1.1 302
-Sep 25 15:58:51 mnau dockerd-current[10023]: 172.18.0.1 GET /api/ - HTTP/1.1 200
-Sep 25 15:58:51 mnau dockerd-current[10023]: 172.18.0.1 GET /api/v2/auth/ - HTTP/1.1 200
 ```
 
 ## :construction: User & Group Management events - User add
 
 ```
-Sep 26 11:18:15 mnau dockerd-current[18199]: 2019-09-26 09:18:15,958 INFO     awx.api.generics User NewUser1 created by admin.
-Sep 26 11:18:16 mnau dockerd-current[18199]: 172.18.0.1 POST /api/v2/organizations/1/users/ - HTTP/1.1 201
-Sep 26 11:18:16 mnau dockerd-current[18199]: /venv/awx/lib64/python3.6/site-packages/rest_framework/pagination.py:198: UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: <class 'django.contrib.auth.models.User'> QuerySet.
-Sep 26 11:18:16 mnau dockerd-current[18199]:   paginator = self.django_paginator_class(queryset, page_size)
-Sep 26 11:18:16 mnau dockerd-current[18199]: 172.18.0.1 GET /api/v2/me/ - HTTP/1.1 200
-Sep 26 11:18:16 mnau dockerd-current[18199]: 172.18.0.1 GET /api/v2/users/?page_size=20&order_by=username - HTTP/1.1 200
-Sep 26 11:18:16 mnau dockerd-current[18199]: 172.18.0.1 GET /api/v2/users/11/ - HTTP/1.1 200
-Sep 26 11:18:16 mnau dockerd-current[18199]: 172.18.0.1 GET /api/v2/me/ - HTTP/1.1 200
-Sep 26 11:18:16 mnau dockerd-current[18199]: 172.18.0.1 GET /api/v2/users/1/admin_of_organizations/ - HTTP/1.1 200
-Sep 26 11:18:16 mnau dockerd-current[18199]: 172.18.0.1 OPTIONS /api/v2/users/ - HTTP/1.1 200
-Sep 26 11:18:16 mnau dockerd-current[18199]: 172.18.0.1 OPTIONS /api/v2/users/ - HTTP/1.1 200
+Sep 26 16:21:24 mnau dockerd-current[22437]: 2019-09-26 14:21:24,635 INFO     awx.api.generics User NewUser1{'username': 'NewUser1', 'first_name': 'John', 'last_name': 'Doe', 'email': 'wake@me.up', 'is_superuser': False, 'is_system_auditor': False} created by admin.
 ```
 
 ## :construction: User & Group Management events - User delete
 
 ```
-Sep 26 13:23:25 mnau dockerd-current[22437]: 2019-09-26 11:23:25,739 INFO     awx.api.views User TestUser deleted by admin.
-Sep 26 13:23:25 mnau dockerd-current[22437]: 172.18.0.1 DELETE /api/v2/users/13/ - HTTP/1.1 204
-Sep 26 13:23:25 mnau dockerd-current[22437]: 172.18.0.1 GET /api/v2/users/?page_size=20&order_by=username - HTTP/1.1 200
-Sep 26 13:23:25 mnau dockerd-current[22437]: 172.18.0.1 GET /api/v2/me/ - HTTP/1.1 200
-Sep 26 13:23:26 mnau dockerd-current[22437]: 172.18.0.1 OPTIONS /api/v2/users/ - HTTP/1.1 200
-Sep 26 13:23:26 mnau dockerd-current[22437]: 172.18.0.1 OPTIONS /api/v2/users/ - HTTP/1.1 200
+Sep 27 12:21:07 mnau dockerd-current[13822]: 2019-09-27 10:21:07,642 INFO     awx.api.generics User NewUser1 deleted by admin.
 ```
 
 ## :construction: User & Group Management events - User modify
 
 ```
+Sep 27 12:20:19 mnau dockerd-current[13822]: 2019-09-27 10:20:19,421 INFO     awx.api.generics User modified by admin. Values are {'username': 'NewUser1', 'first_name': 'John', 'last_name': 'Dove', 'email': 'wake@me.up', 'is_superuser': False, 'is_system_auditor': False}
 ```
 
 ## User & Group Management events - User suspend
 
 N/A - User suspend action not available.
 
-# Assessed Systems
-  * AWX 7.0.0-228-g640e5391f
-  * Ansible 2.10.0.dev0
+## User & Group Management events - User lock
+
+N/A - User lock action not available.
+
+## :construction: User & Group Management events - Group add
+
+```
+Sep 27 12:28:05 mnau dockerd-current[13822]: 2019-09-27 10:28:05,752 INFO     awx.api.generics Team None{'name': 'TestTeam', 'description': 'Must be agile!', 'organization': <Organization: Default-1>} created by admin.
+```
+
+## :construction: User & Group Management events - Group delete
+
+```
+Sep 27 12:36:17 mnau dockerd-current[13822]: 2019-09-27 10:36:17,051 INFO     awx.api.generics Team TestTeam-None deleted by admin.
+```
+
+## :construction: User & Group Management events - Group modify
+
+```
+Sep 27 12:35:51 mnau dockerd-current[13822]: 2019-09-27 10:35:51,948 INFO     awx.api.generics Team modified by admin. Values are {'name': 'TestTeam', 'description': "Let's deliver quick!", 'organization': <Organization: Default-1>}
+```
+
+# Assessment Details
+Assessment was conducted during autumn of 2019. Both Web Interface and API was assessed. Relevant versions: AWX-7.0.0-228-g640e5391f, Ansible 2.10.0.dev0.
