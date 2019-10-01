@@ -20,23 +20,27 @@ Sep 25 15:44:58 mnau dockerd-current[10023]: 2019-09-25 13:44:58,065 WARNING  aw
 Sep 25 15:58:51 mnau dockerd-current[10023]: 2019-09-25 13:58:51,050 INFO     awx.api.generics User admin logged out.
 ```
 
-## :construction: User & Group Management events - User add
+## User & Group Management events - User add
 
-```
-Sep 26 16:21:24 mnau dockerd-current[22437]: 2019-09-26 14:21:24,635 INFO     awx.api.generics User NewUser1{'username': 'NewUser1', 'first_name': 'John', 'last_name': 'Doe', 'email': 'wake@me.up', 'is_superuser': False, 'is_system_auditor': False} created by admin.
-```
+All changes to Users are logged and available for auditing. At the users page, you can click `View Activity Stream` icon at top right corner of the view to see changes relevant to the User data.
 
-## :construction: User & Group Management events - User delete
+![Screenshot of Ansible Tower 2.5 - User creation](pics/tower-user-activity-stream-1-creation.jpg)
 
-```
-Sep 27 12:21:07 mnau dockerd-current[13822]: 2019-09-27 10:21:07,642 INFO     awx.api.generics User NewUser1 deleted by admin.
-```
+Each log event contains details that can be reviewed.
 
-## :construction: User & Group Management events - User modify
+![Screenshot of Ansible Tower 2.5 - User creation Detail](pics/tower-user-activity-stream-2-creation-detail.jpg)
 
-```
-Sep 27 12:20:19 mnau dockerd-current[13822]: 2019-09-27 10:20:19,421 INFO     awx.api.generics User modified by admin. Values are {'username': 'NewUser1', 'first_name': 'John', 'last_name': 'Dove', 'email': 'wake@me.up', 'is_superuser': False, 'is_system_auditor': False}
-```
+## User & Group Management events - User delete
+
+User deletion action is logged with all the properties of user model at the time of deletion.
+
+![Screenshot of Ansible Tower 2.5 - User creation Detail](pics/tower-user-activity-stream-4-deletion.jpg)
+
+## User & Group Management events - User modify
+
+User modifications are logged while sensitive information (like passwords) will be hidden from the audit log.
+
+![Screenshot of Ansible Tower 2.5 - User modify action](pics/tower-user-activity-stream-3-update.jpg)
 
 ## User & Group Management events - User suspend
 
@@ -63,6 +67,10 @@ Sep 27 12:36:17 mnau dockerd-current[13822]: 2019-09-27 10:36:17,051 INFO     aw
 ```
 Sep 27 12:35:51 mnau dockerd-current[13822]: 2019-09-27 10:35:51,948 INFO     awx.api.generics Team modified by admin. Values are {'name': 'TestTeam', 'description': "Let's deliver quick!", 'organization': <Organization: Default-1>}
 ```
+
+## Privilege/Role escalation
+
+N/A - privilege/role escalation action not available.
 
 # Assessment Details
 Assessment was conducted during autumn of 2019. Both Web Interface and API was assessed. Relevant versions: AWX-7.0.0-228-g640e5391f, Ansible 2.10.0.dev0.
