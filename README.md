@@ -8,10 +8,10 @@ This guide was last tested with Ansible Tower 3.5.x.
 ## Two Logging Mechanisms Available
 
 Ansible Tower provides comprehensive logging sub-system with wide range of customization options. On top of the
-standard logging sub-system Ansible Tower offers **Activity Stream**) interface. Activity Streams provide high-level
-interface to audit information that is easy to use and easy to comprehend by human operators.
+standard logging sub-system Ansible Tower offers high-level interface called **Activity Stream**. Activity Streams
+provide audit information that is easy to use and easy to comprehend by human operators.
 
-In the next chapter, we will take look at how to leverage Activity Stream interface, in second chapter we will dive
+In the next chapter, we will take look at how to leverage Activity Stream interface, in the third chapter we will dive
 into settings of the standard logging mechanism.
 
 ## Activity Streams :: High level logs
@@ -50,7 +50,7 @@ other settings have to be supplied to `/etc/tower/conf.d/`.
 ### Proceeding without logging aggregation
 
 It assumed that most installations will forward logs from Ansible Tower to log aggregation system (Logstash, Splunk,
-Loggly, Sumologic, or other) as described in previous section. Although, for quick testing purposes we can hijack
+Loggly, Sumologic, or other) as described in previous section. For quick testing purposes, however, we can hijack
 the external logging stream and log its content to a local file system.
 
 ```
